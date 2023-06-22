@@ -17,7 +17,7 @@ pub enum Command {
 }
 
 const EXPECT_MSG: &str = "Vec was not large enough";
-const ADDRESS: u8 = 0x61 << 1;
+const ADDRESS: u8 = 0x61;
 
 pub struct Scd30<T> {
     comm:    T,
