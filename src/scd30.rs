@@ -26,7 +26,7 @@ pub struct Scd30<T> {
     address: u8,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Measurement {
     pub co2:         f32,
     pub humidity:    f32,
