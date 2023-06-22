@@ -1,3 +1,5 @@
+use std::{time, thread};
+
 use embedded_hal::blocking::i2c::{Read, Write};
 use heapless::Vec;
 use crc_all::Crc;
@@ -126,6 +128,7 @@ impl<T, E> Scd30<T> where T: Read<Error = E> + Write<Error = E> {
     pub fn data_ready(&mut self) -> Result<bool, E> {
         let mut buf = [0u8; 2];
         self.comm.write(self.address, &(Command::GetDataReadyStatus as u16).to_be_bytes())?;
+        thread::sleep(time::Duration::from_millis(1));
         self.comm.read(self.address, &mut buf)?;
         Ok(u16::from_be_bytes(buf) == 1)
     }
@@ -136,6 +139,7 @@ impl<T, E> Scd30<T> where T: Read<Error = E> + Write<Error = E> {
                 let mut buf = [0u8; 6 * 3];
 
                 self.comm.write(self.address, &(Command::ReadMeasurement as u16).to_be_bytes())?;
+                thread::sleep(time::Duration::from_millis(1));
                 self.comm.read(self.address, &mut buf)?;
 
                 Ok(Some(Measurement {
