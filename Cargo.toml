@@ -1,8 +1,11 @@
 [package]
 name = "scd30"
-version = "0.4.0"
+version = "0.4.1"
 description = "A SCD30 driver crate"
-authors = ["Vincent Stakenburg <vincentstakenburg@gmail.com>"]
+authors = [
+    "Vincent Stakenburg <vincentstakenburg@gmail.com>",
+    "Florentin Schäfer <florentin.schaefer@gmail.com>",
+]
 repository = "https://github.com/sinuss/scd30-rs"
 readme = "README.md"
 categories = ["embedded"]
@@ -10,6 +13,6 @@ license = "Apache-2.0"
 edition = "2018"
 
 [dependencies]
-embedded-hal = "0.2.2"
-heapless = "0.7.4"
-crc_all = "0.2.0"
+embedded-hal = "0.2"
+heapless = "0.8"
+crc_all = "0.2"
